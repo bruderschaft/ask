@@ -1,0 +1,32 @@
+
+{%extends "base1.html"%}
+{%block content%}
+
+<div class="row-fluid questions">
+    <h3></h3>
+    <!--<div class="row-fluid"> -->
+    {%for qqq in qq%}
+    <div class="span11 question">
+        <div class="span2">
+            будет рейтинг
+        </div>
+        <div class="span10">
+            <h2>{{qqq.header}}</h2>
+            <p>{{qqq.content}}</p>
+            <p><h4><a href="/users/{{qqq.author_id}}">{{qqq.author.username}}    </a>   asked {{qqq.create_date}}</h4></p>
+      
+            <div class="buttons">
+                <span class="btn-link"><big><a href="/questions/{{qqq.id}}">read answers({{qqq.count}})</a></big></span>
+                <span class="btn-link question__toolbar-element"><a href="/questions/{{qqq.id}}#antwort"><big>Answer</big></a></span>
+                <span class="btn-link question__toolbar-element"><big>Like</big></span>
+                <span class="btn-link question__toolbar-element"><big>Dislike</big></span>
+            </div>
+        </div>
+    </div>  
+    {%endfor%}
+    <!--</div>-->
+    <!--<div style="clear:both;"></div>-->
+</div>
+{%endblock%}
+                        
+                    

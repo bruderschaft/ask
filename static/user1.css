@@ -1,0 +1,63 @@
+.header{
+	border: 0px solid black;
+
+}
+.tags{
+	border: 1px solid black;
+}
+.buttons{
+	bottom: -1px;
+}
+.nav-tabs{
+	width: inherit;
+}
+.content{
+	border: 1px solid black;
+	padding: 15px;
+	height: 92px;
+}
+.title{
+	/*margin-top: 20px;
+	margin-bottom: 20px;*/
+	display: inline-block;
+}
+.greeting__message{
+	display: inline-block;
+	padding-right: 10px;
+}
+.greeting__logout{
+	display: inline-block;
+	margin-bottom: 10px;
+}
+.greeting{
+	display: inline-block;
+	float: right;
+	margin-right: 280px;
+	padding-top: 16px;
+}
+.inline{
+	display: inline-block;
+	margin-right: 275px;
+	float: right;
+	padding-top: 16px;
+}
+.logout{
+	display: inline;
+}
+
+.question{
+	height: 160px;
+	position: relative;
+	margin-bottom: 20px; 
+	border: 1px solid black;	
+}
+.tabs{
+	margin-bottom: 0px;
+	position: relative;
+	top:22px;
+}
+.question__toolbar-element{
+	border-left: 2px solid;
+	margin-left: 5px;
+	padding-left: 5px;
+}

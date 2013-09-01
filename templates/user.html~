@@ -1,0 +1,95 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Bootstrap 101 Шаблон</title>
+    <!-- Bootstrap 
+    {% load static %}
+    {% get_static_prefix as STATIC_PREFIX %}-->
+ 
+    <link rel="stylesheet" href="../templates/bootstrap/css/bootstrap.min.css" type="text/css" media="all" charset="utf-8">
+    <link href="/templates/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/templates/user.css" rel="stylesheet" media="screen">
+    <meta charset="UTF-8">
+    </head>
+    <body>
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <div class="container-fluid">        
+        <div class="row-fluid"> 
+            <div class="span10 offset1">
+                <div class="row-fluid">
+                    <div class="header span9">
+                        <h1>Be smart - ask Pupkin</h1>
+                    </div>
+                </div>
+                <div class="row-fluid">     
+                    <div class="span9">
+                        <div class="tabs">тут вкладочки будут</div>
+                        <!--<h2>кнопочки {{ header }}</h2>-->
+                        
+                        <div class="row-fluid questions">
+                            <h3></h3>
+                            <!--<div class="row-fluid"> -->
+                                
+                                <div class="span11 question-page">
+                                    <div class="span2">
+                                        <div class="photo">юзерпик</div>
+                                    </div>
+                                    <div class="span10">
+                                            <h2> {{u.username}} </h2>
+                                            <p>{{u.first_name}} {{u.last_name}} </p>
+                                            <div class="username">
+                                                <span class="btn-link"><big>{{username}}</big></span>
+                                            </div>
+                                            <div>
+                                                <span class="btn-link"><big>Like</big></span>
+                                                <span class="btn-link"><big>Dislike</big></span>
+                                            </div>
+                                    </div>
+                                </div>
+                                
+                                <!--<div class="answers row-fluid">-->
+                               
+                                    <div class=" row ">
+                                        <div class="span12">
+                                                <div class="q-list span5 offset1"> 
+                                                    <h3> Вопросы пользователя {{u.username}} </h3>
+                                                    
+                                                    {%for qq in q%}
+                                                    <div class="quest"> {{qq.content}} а еще у меня включено text-overwlow!</div>
+                                                    {%endfor%}
+
+                                                </div>
+                                                <div class="ans-list span5 ">
+                                                    <h3> Ответы пользователя {{u.username}} </h3>
+                                                    
+                                                    {%for aa in a%} 
+                                                    <div class="answ"> {{aa.content}} а еще у меня включено text-overwlow! </div>
+                                                    {%endfor%}
+                                                
+                                                </div>
+                                            
+                                        </div>
+                                    </div>
+                                
+                                <!--</div> -->
+                                
+                            <!--</div>-->
+                            <div style="clear:both;"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="span3">
+                        <h2>теги</h2>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </body>
+    </html>

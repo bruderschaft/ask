@@ -1,0 +1,84 @@
+.question{
+	/*border:2px solid black;*/
+	height: 160px;
+	/*width: */
+	position: relative;
+	margin-bottom: 20px; 
+	/*margin-right: 20px;
+	margin-left: 20px;*/
+
+	
+}
+.questions{
+	border: 2px solid black;
+	
+	/*padding: 20px;*/
+	padding-top: 0px;
+	padding-bottom: 10px;
+	/*height: 470px;*/
+
+}
+.tags{
+	border:2px solid black;
+	height: 200px;
+}
+.tabs{
+	height: 30px;
+	
+	/*margin-left: 10px;*/
+}
+.header{
+	margin-bottom: 40px;
+}
+.buttons{
+	/*border: 2px solid black;*/
+	position: absolute;
+	bottom: 20px;
+	/*right: 100px;*/
+	/*margin-top: 100px;*/
+}
+span + span{
+	border-left: 2px solid;
+	margin-left: 5px;
+	padding-left: 5px;
+}
+.username{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.question-page{
+	border-bottom: 2px solid;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+}
+.answer{
+	border: 2px solid;
+	padding: 10px;
+	margin-bottom: 20px;
+	
+	/*position: relative;*/
+}
+
+.q-list{
+	border-right: 2px solid;
+	padding-right: 15px;
+}
+
+.ans-list{
+}
+
+.quest{
+	border-bottom: 2px solid;
+	text-overflow: ellipsis;
+	white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden;
+    padding: 5px;
+}
+
+.answ{
+	border-bottom: 2px solid;
+	text-overflow: ellipsis;
+	white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden;
+    padding: 5px;
+}

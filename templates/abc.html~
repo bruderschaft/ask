@@ -1,0 +1,64 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Bootstrap 101 Шаблон</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="user.css" rel="stylesheet" media="screen">
+	<meta charset="UTF-8">
+    </head>
+    <body>
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <div class="container-fluid">        
+        <div class="row-fluid"> 
+            <div class="span10 offset1">
+                <div class="row-fluid">
+                    <div class="header span9">
+                        <h1>Be smart - ask Pupkin</h1>
+                    </div>
+                </div>
+                <div class="row-fluid">     
+                    <div class="span9">
+                        <div class="tabs">тут вкладочки будут</div>
+                        <!--<h2>кнопочки {{ header }}</h2>-->
+                        
+                        <div class="row-fluid questions">
+                            <h3></h3>
+                            <!--<div class="row-fluid"> -->
+                                {%for qqq in qq%}
+                                <div class="span11 question">
+                                    <div class="span2">
+                                        <button class="btn">будет рейтинг</button>
+                                    </div>
+                                    <div class="span10">
+                                        <h2>{{qqq.header}}</h2>
+                                        <p>{{qqq.content}}</p>
+                                        <div class="buttons">
+                                            <span class="btn-link"><big>read answers ({{count}})</big></span>
+                                            <span class="btn-link"><big>Answer</big></span>
+                                            <span class="btn-link"><big>Like</big></span>
+                                            <span class="btn-link"><big>Dislike</big></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {%endfor%}
+                            <!--</div>-->
+                            <div style="clear:both;"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="span3">
+                        <h2>теги</h2>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </body>
+    </html>

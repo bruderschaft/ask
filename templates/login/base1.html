@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Вопросы и ответы</title>
+    <!-- Bootstrap 
+    {% load static %}
+    {% get_static_prefix as STATIC_PREFIX %}-->
+ 
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" media="all" charset="utf-8">
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="user1.css" rel="stylesheet" media="screen">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="row-fluid tags">
+            <div class="span10 offset1">
+                <div class="header">
+                    <span class="title"><h1>Be smart - <a href="/">Ask Pupkin</a></h1></span>
+                    <span>dsksl</span>
+                        <form class="form-inline" action="login/">
+                            <input type="text" class="input-small" placeholder="Email">
+                            <input type="password" class="input-small" placeholder="Пароль">
+                            <label class="checkbox">
+                                <input type="checkbox"> Запомнить меня
+                            </label>
+                            <button type="submit" class="btn">Войти</button>
+                        </form>
+
+                </div>
+                <div class="row-fluid">
+                    <div class="span9 tags">
+                        {%block content%}
+                        {%endblock%}
+                    </div>
+                    <div class="span3 tags"></div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+
+<!-- 
+    <div>    
+        <ul class="nav nav-tabs">
+            <li class="active"> <a href="#">Новые</a> </li>
+            <li><a href="#">Популярные</a></li>
+            <li><a href=""></a></li>
+        </ul>
+    </div> 
+-->

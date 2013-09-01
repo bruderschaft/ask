@@ -1,0 +1,95 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Bootstrap 101 Шаблон</title>
+    <!-- Bootstrap 
+    {% load static %}
+    {% get_static_prefix as STATIC_PREFIX %}-->
+ 
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" type="text/css" media="all" charset="utf-8">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../user.css" rel="stylesheet" media="screen">
+    <meta charset="UTF-8">
+    </head>
+    <body>
+    
+
+
+    <div class="container-fluid">        
+        <div class="row-fluid "> 
+            <div class="span10 offset1">
+                <div class="row-fluid">
+                    <div class="span12 header">
+                        <span><h1 id="title">Be smart - ask Pupkin</h1></span>
+
+                        <span id="login-form">
+                        
+
+                        
+                            <!--<form class="form-inline" id="login-form"  action="/login/" method="POST">
+                                {{form}}
+                                {%csrf_token%}
+
+                            <input type="text" class="input-small" name="username" placeholder="username">
+                            <input type="password" class="input-small" name="password" placeholder="Пароль">
+                            <label class="checkbox">
+                                <input type="checkbox"> Запомнить меня
+                            </label>
+
+                            <input type="submit" class="btn btn-primary" value="Войти"/>
+                            
+                            <button type="submit" class="btn">Войти</button>
+                            </form>-->
+                        
+
+                            <form class="form-inline" action="/login/" method="POST">
+                                <!--<div class="control-group">-->
+                                    <label class="control-label" for="inputEmail">name</label>
+                                    <!--<div class="controls us-name">-->
+                                    <span class="us-name">
+                                        {{form.username}}
+                                    </span>
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="control-group">-->
+                                    <label class="control-label" for="inputPassword">Password</label>
+                                    <!--<div class="controls pass">-->
+                                    <span class="pass">
+                                        {{form.password}}
+                                        {%csrf_token%}
+                                    </span>
+
+                                    <!--</div>-->
+                                <!--</div>-->
+                                    <button type="submit" class="btn">Sign in</button>
+                                    {%if form.username.errors %}
+                                    <div class="control-label"> 
+                                        {{form.username.errors}} 
+                                    </div>
+                                    {%endif%}
+                                    {%if form.password.errors%}
+                                    <div    >
+                                        {{form.password.errors}}
+                                    </div>
+                                    {%endif%}
+                                <!--</div>-->
+                                <!--</div>-->
+                            </form>
+                        
+                        </span>
+                        
+
+                    </div>
+                </div>
+                <div class="row-fluid">     
+                    <div class="span9">
+                        
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </body>
+    </html>

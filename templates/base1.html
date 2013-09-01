@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Вопросы и ответы</title>
+    <!-- Bootstrap 
+    {% load static %}
+    {% get_static_prefix as STATIC_PREFIX %}-->
+ 
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" media="all" charset="utf-8">
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="user1.css" rel="stylesheet" media="screen">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="row-fluid tags">
+            <div class="span10 offset1">
+                <div class="header">
+                    <span class="title"><h1>Be smart - <a href="/">Ask Pupkin</a></h1></span>
+                    {% if not user.is_authenticated %}
+                        <span class="inline">
+                        	    <form class="form-inline" action="login/" method="POST">
+                                <input type="text" class="input-small" placeholder="username" name="username">
+                                <input type="password" class="input-small" placeholder="Пароль" name="password">
+                                <button type="submit" class="btn">Войти</button>
+                                {%csrf_token%}
+                            </form>
+                        </span>
+                    {% else %}
+                        <span class="greeting">
+                            <span class="greeting__message">
+                                <h4>Hello, {{user.username}} </h4>
+                            </span>
+                            <span class="greeting__logout">
+                                <a href="/logout/" class="btn btn-mini">разлогиниться:(</a>
+                            </span>
+                        </span>
+                    {% endif %}
+                </div>
+                
+                <div class="tabs">    
+                    <ul class="nav nav-pills">
+                        <li class="active">
+                            <a href="#">Главная</a>
+                        </li>
+                        {%if user.is_authenticated%}
+                        <li><a href="/new_question">задать вопрос!</a></li>
+                        {%endif%}
+                    </ul>
+                </div>
+                <div class="row-fluid">
+	                <div class="span9 tags">
+	                        {%block content%}
+	                        {%endblock%}
+	                </div>
+	                <div class="span3 tags"></div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</body>
+
+<!-- 
+    <div>    
+        <ul class="nav nav-tabs">
+            <li class="active"> <a href="#">Новые</a> </li>
+            <li><a href="#">Популярные</a></li>
+            <li><a href=""></a></li>
+        </ul>
+    </div> 
+-->
