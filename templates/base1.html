@@ -6,19 +6,19 @@
     {% load static %}
     {% get_static_prefix as STATIC_PREFIX %}-->
  
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css" media="all" charset="utf-8">
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="user1.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css" media="all" charset="utf-8">
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="/user1.css" rel="stylesheet" media="screen">
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row-fluid tags">
+        <div class="row-fluid">
             <div class="span10 offset1">
                 <div class="header">
                     <span class="title"><h1>Be smart - <a href="/">Ask Pupkin</a></h1></span>
                     {% if not user.is_authenticated %}
                         <span class="inline">
-                        	    <form class="form-inline" action="login/" method="POST">
+                        	    <form class="form-inline" action="/login/" method="POST">
                                 <input type="text" class="input-small" placeholder="username" name="username">
                                 <input type="password" class="input-small" placeholder="Пароль" name="password">
                                 <button type="submit" class="btn">Войти</button>

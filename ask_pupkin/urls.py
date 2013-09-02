@@ -18,4 +18,5 @@ urlpatterns = patterns('',
 	url( r'^login/$', 'askPupkinApp.views.log_in', name='log_in'),
 	url(r'^questions/(?P<question_id>\d+)$', 'askPupkinApp.views.questions', name='questions'),
 	url( r'^logout/$', 'askPupkinApp.views.log_out', name='log_out'),
+	url(r'^users/(?P<user_id>\d+)$', 'askPupkinApp.views.users', name='users'),
 )

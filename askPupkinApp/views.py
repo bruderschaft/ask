@@ -42,8 +42,19 @@ def questions (request, question_id):
     #else:
     #    form = AnswerForm()  
     last_users = User.objects.order_by('-date_joined')[0:10]
-    c = RequestContext(request,{'header': 'fjjj', 'qq':q, 'aa':a,'q_count':q_count, 'last_users': last_users})
+    c = RequestContext(request,{'qq':q, 'aa':a,'q_count':q_count, 'last_users': last_users})
     return HttpResponse(t.render(c))
+
+def users(request, user_id):
+    u = User.objects.get(id=user_id)
+    q = Question.objects.filter(author=user_id)
+    a = Answer.objects.filter(author=user_id)
+    return render(request, 'user.html', {'u': u, 'q': q, 'a': a})
+
+
+
+#TODO: for one def one method of rendering to return
+
 #####################################################################################################################################
 class LoginForm(forms.Form):
     username = forms.CharField()
