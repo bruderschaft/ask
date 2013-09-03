@@ -2,7 +2,7 @@
 	border: 0px solid black;
 
 }
-.tags{
+.column{
 	border: 1px solid black;
 }
 .buttons{
@@ -100,4 +100,20 @@
 }
 .user-page__header__username{
 	margin-left: auto;
+}
+
+.registered-user{
+	font-size: 20px;
+	margin: 5px;
+	line-height: 1.5em;
+}
+
+.last-users-list{
+	/*border: 1px solid black;
+	padding: 10px;*/
+	padding-top: 0px;
+}
+.last-users-list__header{
+	position: relative;
+	margin-top: 0px !important; 
 }

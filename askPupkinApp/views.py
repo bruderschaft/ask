@@ -8,10 +8,10 @@ from django.template import RequestContext, loader
 from django.http import HttpResponse
 
 from django.contrib.auth import authenticate, login, logout
-
+#TODO: how make one function for last registered users?
 def index(request):
     q = Question.objects.order_by('-create_date')[0:30]
-    u = User.objects.order_by('-date_joined')[0:10]
+    last_registered_users = User.objects.order_by('-date_joined')[0:10]
     for qq in q:
         qq.count = Answer.objects.filter(question_id=qq.id).count()
     #r = Question.objects.get(id=52)
@@ -22,7 +22,7 @@ def index(request):
     #a = Answer.objects.filter(question_id=question_id)
 
     #t = loader.get_template("index.html")
-    return render(request, 'index.html', {'qq': q})
+    return render(request, 'index.html', {'qq': q, 'last_registered_users': last_registered_users})
 
 def questions (request, question_id):
     q = Question.objects.get(id=question_id)
@@ -41,15 +41,16 @@ def questions (request, question_id):
     #    return HttpResponseRedirect(request.path)
     #else:
     #    form = AnswerForm()  
-    last_users = User.objects.order_by('-date_joined')[0:10]
-    c = RequestContext(request,{'qq':q, 'aa':a,'q_count':q_count, 'last_users': last_users})
+    last_registered_users = User.objects.order_by('-date_joined')[0:10]    
+    c = RequestContext(request,{'qq':q, 'aa':a,'q_count':q_count, 'last_registered_users': last_registered_users})
     return HttpResponse(t.render(c))
 
 def users(request, user_id):
     u = User.objects.get(id=user_id)
     q = Question.objects.filter(author=user_id)
     a = Answer.objects.filter(author=user_id)
-    return render(request, 'user.html', {'u': u, 'q': q, 'a': a})
+    last_registered_users = User.objects.order_by('-date_joined')[0:10]    
+    return render(request, 'user.html', {'u': u, 'q': q, 'a': a, 'last_registered_users': last_registered_users})
 
 
 
@@ -122,6 +123,7 @@ class LoginForm(forms.Form):
 #        'form': form
 #    })
 def log_in(request):
+    last_registered_users = User.objects.order_by('-date_joined')[0:10]    
     if ('username' in request.REQUEST) and ('password' in request.REQUEST):
         username = request.REQUEST['username']
         password = request.REQUEST['password']
@@ -131,7 +133,7 @@ def log_in(request):
             flag = True
             login(request, usser)
             return HttpResponseRedirect('/')
-    return render(request, 'base1.html', {'user': usser})
+    return render(request, 'base1.html', {'user': usser, 'last_registered_users': last_registered_users})
     #return HttpResponseRedirect('/')
 
 def log_out(request):
