@@ -1,0 +1,44 @@
+{%extends "base1.html"%}
+{%block content%}
+<div class="row-fluid questions">
+    <h3></h3> <!-- magic!!! не удалять - без этого не работает -->
+                                    
+        <div class="span11 question-page">
+            <div class="span2">
+                будет рейтинг
+            </div>
+            <div class="span10">
+                <h3>{{qq.header}}</h3>
+                <p>{{qq.content}}</p>
+                <div class="username">
+                    <p><h4><a href="/users/{{qq.author_id}}">{{qq.author.username}} </a> asked {{qq.create_date}}</h4></p>  
+                </div>
+                <div>
+                    <span class="btn-link"><big>Like</big></span>
+                    <span class="btn-link question__toolbar-element"><big>Dislike</big></span>
+                </div>
+            </div>
+        </div>
+                                    
+    {%for aaa in aa%}
+    <div class="answer span11 question" name="{{aaa.id}}">
+        <div class="span2">
+            будет рейтинг
+        </div>
+        <div class="span10 answer__content"> <!-- TODO: ограничить длину ответа чтоб не съехал тулбар или динамически расширить высоту-->
+            <p><a name="{{aaa.id}}" class="not-href"> {{aaa.content}} </a></p> <!-- бутстрап бустрапит якоря-->
+            <div class="answer__content__toolbar">
+                <div class="username">
+                    <span class="btn-link"><h5><a href="/users/{{aaa.author_id}}">{{aaa.author.username}} </a> </h5></span>{{aaa.write_date}} 
+                </div>
+                <div>
+                    <span class="btn-link">Like</span>
+                    <span class="btn-link question__toolbar-element">Dislike</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+    <div style="clear:both;"></div>
+</div>
+{%endblock%}

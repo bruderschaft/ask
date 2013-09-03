@@ -1,0 +1,33 @@
+{%extends "base1.html"%}
+{%block content%}
+<div class="row-fluid user-page__content"> <!-- TODO: разобраться с применением padding'а-->
+    <div class="span11"> 
+        <div class="row-fluid user-page__header">
+                <div class="span2">
+                    <div class="photo">юзерпик</div> <!-- TODO: нахуярить картинок-юзерпиков -->
+                </div>
+                <div class="span10">
+                        <h2 class="user-page__header__username"> {{u.username}} </h2>
+                        <p>{{u.first_name}} {{u.last_name}} </p>
+                </div>
+        </div>           
+        
+        <div class="span5 offset1 "> 
+            <h3> Вопросы пользователя {{u.username}} </h3>
+            {%for qq in q%}
+            <div class="quest"> <a href="/questions/{{qq.id}}">{{qq.content}} а еще у меня включено text-overwlow! </a>
+            </div>
+            {%endfor%}
+
+        </div>
+        <div class="span5">
+            <h3> Ответы пользователя {{u.username}} </h3>
+            {%for aa in a%} 
+            <div class="answ"> <a href="/questions/{{aa.question_id}}#{{aa.id}}">{{aa.content}} а еще у меня включено text-overwlow! </a></div>
+            {%endfor%}
+        </div>
+                
+        <div style="clear:both;"></div>
+    </div>
+</div>
+{%endblock%}
