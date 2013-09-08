@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from askPupkinApp.models import Question, Answer
 from django.contrib.auth.models import User
@@ -14,14 +15,6 @@ def index(request):
     last_registered_users = User.objects.order_by('-date_joined')[0:10]
     for qq in q:
         qq.count = Answer.objects.filter(question_id=qq.id).count()
-    #r = Question.objects.get(id=52)
-    #s = Question.objects.get(id=53)
-    #h = q.header
-    #con = q.content
-    #q_count = Question.objects.filter(author_id=q.author_id).count()
-    #a = Answer.objects.filter(question_id=question_id)
-
-    #t = loader.get_template("index.html")
     return render(request, 'index.html', {'qq': q, 'last_registered_users': last_registered_users})
 
 def questions (request, question_id):
@@ -124,6 +117,7 @@ class LoginForm(forms.Form):
 #    })
 def log_in(request):
     last_registered_users = User.objects.order_by('-date_joined')[0:10]    
+    #*variant#1
     if ('username' in request.REQUEST) and ('password' in request.REQUEST):
         username = request.REQUEST['username']
         password = request.REQUEST['password']
@@ -134,11 +128,71 @@ def log_in(request):
             login(request, usser)
             return HttpResponseRedirect('/')
     return render(request, 'base1.html', {'user': usser, 'last_registered_users': last_registered_users})
-    #return HttpResponseRedirect('/')
+
+    #*variant#2
+    #*if request.method == 'POST':
+    #*    form = LoginForm(request.POST)
+    #*    if form.is_valid():
+    #*        if form.get_user():
+    #*            login(request, form.get_user())
+    #*
+    #*            return HttpResponseRedirect('/')
+    #*    else:
+    #*        form = LoginForm()
+    #*
+    #*    return render(request, 'base1.html', {'form': form, 'last_registered_users': last_registered_users})
 
 def log_out(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+class RegistrationForm(forms.Form):
+    username = forms.CharField(label='Имя пользователя')
+    email = forms.CharField(label="Email") #TODO: add email-widget
+    password1 = forms.CharField(label=u'Пароль', widget=forms.PasswordInput)
+    password2 = forms.CharField(label=u'Повторите пароль', widget=forms.PasswordInput)
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        exists = bool(User.objects.filter(username=username))#.count()
+        if exists:
+            #raise forms.ValidationError(u'username уже занят') #то же самое
+            msg = u'username уже занят!!!'
+            self._errors["username"] = self.error_class([msg])
+        return username
+
+    def clean(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        if password1 != password2:
+            raise forms.ValidationError(u'пароли не совпадают')
+            del cleaned_data["password1"]
+            del cleaned_data["password2"]
+            msg = u'пароли не совпадают'
+            self._errors["password2"] = self.error_class([msg])
+        # TODO: проверить, что пароли совпадают
+        return self.cleaned_data
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            # TODO:
+            # 1. создать пользователя,
+            # 2. установить ему пароль
+            tempUsername = form.cleaned_data["username"]
+            tempEmail = form.cleaned_data["email"]
+            tempPass = form.cleaned_data["password1"]
+            tempUser = User.objects.create_user(tempUsername, tempEmail, tempPass)
+            tempUser.save()
+            # 3. логинимся
+            tempUser = authenticate(username=form.cleaned_data["username"], password=form.cleaned_data["password1"]) #по-другому не получится
+            login(request, tempUser)
+            return HttpResponseRedirect('/')
+    else:
+        form = RegistrationForm()
+    return render(request, 'register.html', {'form': form})
 
 
   

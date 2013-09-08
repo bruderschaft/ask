@@ -1,6 +1,5 @@
 .header{
 	border: 0px solid black;
-
 }
 .column{
 	border: 1px solid black;
@@ -27,22 +26,31 @@
 }
 .greeting__logout{
 	display: inline-block;
-	margin-bottom: 10px;
+	padding-bottom: 0px;
+	vertical-align: text-bottom;
 }
 .greeting{
 	display: inline-block;
 	float: right;
-	margin-right: 280px;
-	padding-top: 16px;
+	padding-top: 15px;
 }
 .inline{
 	display: inline-block;
-	margin-right: 275px;
 	float: right;
 	padding-top: 16px;
 }
 .logout{
 	display: inline;
+}
+.signup__logined{
+	display: inline-block;
+	float: left;
+	padding-top: 22px;
+}
+.signup__unlogined{ 
+	display: inline-block;
+	float: left;
+	padding-top: 16px;
 }
 
 .question{
@@ -105,7 +113,16 @@
 .registered-user{
 	font-size: 20px;
 	margin: 5px;
-	line-height: 1.5em;
+	line-height: 2em;
+	border: 2px solid #FFEFD5;
+    padding:0px 3px;
+    background-color:#FFEFD5;
+    border-radius:7px;
+}
+
+.registered-user:hover{
+	background-color:#FFE4C4;
+	border: 2px solid #FFE4C4;
 }
 
 .last-users-list{
