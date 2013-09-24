@@ -21,7 +21,7 @@
         </div>
                                     
     {%for aaa in aa%}
-    <div class="answer span11 question" name="{{aaa.id}}">
+    <div class="answer span11" name="{{aaa.id}}">
         <div class="span2">
             будет рейтинг
         </div>
@@ -39,6 +39,21 @@
         </div>
     </div>
     {%endfor%}
+    
+    {% if user.is_authenticated %}
+        <div class="answer-field span11">
+            <h4><a name="antwort" class="not-href">Введите ответ:</a></h4> <!-- бутстрап бустрапит якоря-->
+            <form method="POST" action="/new_answer/{{q_id}}">
+                <div>
+                <textarea rows="5" style="width:600px" name="content"></textarea>
+                </div>
+                 {% csrf_token %}
+                <div>
+                    <button type="submit" class="btn">Answer!</button>
+                </div>
+            </form>
+        </div>
+    {%endif%}
     <div style="clear:both;"></div>
 </div>
 {%endblock%}

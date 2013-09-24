@@ -9,8 +9,42 @@ from django.template import RequestContext, loader
 from django.http import HttpResponse
 
 from django.contrib.auth import authenticate, login, logout
+def frontend(request):
+    return render(request, 'task_1.html')
+
 #TODO: how make one function for last registered users?
 def index(request):
+    q = Question.objects.order_by('-create_date')[0:30]
+    last_registered_users = User.objects.order_by('-date_joined')[0:10]
+    for qq in q:
+        qq.count = Answer.objects.filter(question_id=qq.id).count()
+    return render(request, 'index.html', {'qq': q, 'last_registered_users': last_registered_users})
+
+def question_form(request):
+    return render(request, 'new_question.html')
+
+def new_question(request):
+    if ('header' in request.REQUEST) and ('content' in request.REQUEST):
+        header = request.REQUEST['header']
+        content = request.REQUEST['content']
+        tempUser = request.user
+        tempQuestion = Question(header=header, content=content, author=tempUser)
+        tempQuestion.save()
+        return HttpResponseRedirect('/')
+    q = Question.objects.order_by('-create_date')[0:30]
+    last_registered_users = User.objects.order_by('-date_joined')[0:10]
+    for qq in q:
+        qq.count = Answer.objects.filter(question_id=qq.id).count()
+    return render(request, 'index.html', {'qq': q, 'last_registered_users': last_registered_users})
+
+def new_answer(request, question_id):
+    if ('content' in request.REQUEST):
+        content1 = request.REQUEST['content']
+        tempUser = request.user
+        question1 = Question.objects.get(id=question_id)
+        tempAnswer = Answer(content=content1, question=question1, author=tempUser)
+        tempAnswer.save()
+        return HttpResponseRedirect('/questions/'+question_id)
     q = Question.objects.order_by('-create_date')[0:30]
     last_registered_users = User.objects.order_by('-date_joined')[0:10]
     for qq in q:
@@ -35,7 +69,7 @@ def questions (request, question_id):
     #else:
     #    form = AnswerForm()  
     last_registered_users = User.objects.order_by('-date_joined')[0:10]    
-    c = RequestContext(request,{'qq':q, 'aa':a,'q_count':q_count, 'last_registered_users': last_registered_users})
+    c = RequestContext(request,{'qq':q, 'aa':a,'q_count':q_count, 'last_registered_users': last_registered_users, 'q_id':question_id})
     return HttpResponse(t.render(c))
 
 def users(request, user_id):

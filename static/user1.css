@@ -52,13 +52,23 @@
 	float: left;
 	padding-top: 16px;
 }
-
+.questions{
+	padding: 15px;
+}
 .question{
 	height: 160px;
 	position: relative;
 	margin-bottom: 20px; 
 	border: 1px solid black;	
 }
+.answer-field{
+	height: 240px;
+	position: relative;
+	margin-bottom: 20px; 
+	border: 1px solid black;
+	padding: 15px;
+}
+
 .tabs{
 	margin-bottom: 0px;
 	position: relative;
@@ -75,7 +85,7 @@
 	margin-bottom: 30px;
 }
 .answer{
-	height: 160px;
+	height: 105px;
 	position: relative;
 	margin-bottom: 20px; 
 	border: 1px solid black;

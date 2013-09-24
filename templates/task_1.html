@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<title>Frontend #1</title>
+    
+	<meta charset="UTF-8"></meta>
+    	<script type="text/javascript">
+    		function vote(outputElem, errElem) {
+			  var xhr = new XMLHttpRequest(); 
+			  xhr.open('GET', 'http://localhost:8085', true); 
+			  //var1
+			  /*xhr.onreadystatechange = function() {  
+			    if (xhr.readyState != 4) return; 
+			    outputElem.innerHTML = xhr.status;
+			  }*/
+
+			  //все любые ответы сервера ,404 итд
+			  xhr.addEventListener("load", load, false);
+			  function load(event){
+			  		outputElem.innerHTML = event.target.responseText;
+			  		outputElem.style.border = '1px solid black';
+			  		if (event.target.status == "200") {
+			  			alert("gut status!");
+			  		};
+			  		if (event.target.status == "404") {
+			  			alert("not page!");
+			  		};
+			  }
+			  xhr.send(null);
+
+			 
+			}
+
+			//error
+			function errCall(outputElem){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'http://localhost:8089/', true);
+				xhr.addEventListener("error",error,false);
+				function error (event) {		
+			  		outputElem.innerHTML = "статус ошибки: " + event.target.status;
+			  	}
+			  	xhr.send(null);
+			}
+
+			//jsonp
+			function call(){
+				var s=document.createElement('script');
+				s.src='http://sumin.s.tech-mail.ru/jsonp.js';
+				document.body.appendChild(s);
+			}
+
+			function jsonp(){
+				alert("JSONP successful!");
+			}
+
+
+			function badCORS(outputElem){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'http://cors_dis.s.tech-mail.ru/', true);
+				xhr.addEventListener("error", bad, false);
+				function bad(event){
+					outputElem.innerHTML = event.target.status;
+				}
+				xhr.send(null);
+			}
+
+			function gutCORS(outputElem){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'http://cors_en.s.tech-mail.ru/', true);
+				xhr.addEventListener("load", gut, false);
+				function gut(event){
+					outputElem.innerHTML = event.target.status;
+				}
+				xhr.send(null);
+			}
+
+
+
+
+    	</script>
+    </head>
+    <body>
+    	<button onclick="vote(response, error);">ЗАПРОС!!!</button>
+    	<div id="response" ></div>
+    	<button onclick="errCall(error);">ошибочный запрос</button>
+		<div style="background-color:#f01; color:#fff;" id="error"></div>
+    	<button onclick="call();">JSONP-запрос</button>
+    	<div id="badCORSElem" style="background-color:#f01; color:#fff;"></div>
+    	<button onclick="badCORS(badCORSElem);">плохой CORS-запрос</button>
+    	<div id="gutCORSElem" style="background-color:#afa; color:#000;"></div>
+    	<button onclick="gutCORS(gutCORSElem);">хороший CORS-запрос</button>
+
+		<!-- <form action="http://sumin.s.tech-mail.ru/iframe.html"
+    		method="GET"
+    		enctype="multipart/form-data"
+			target="transport"
+			id="formFrame">
+
+			<input type="submit"></input>
+		</form>
+    	<iframe name="transport" src="#"></iframe> -->
+
+    </body>
+</html>
