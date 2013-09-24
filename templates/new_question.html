@@ -1,0 +1,15 @@
+<div class="row-fluid questions">
+    <h3>Новый вопрос</h3>
+    <form method="POST" action="/new_question/">
+        <div>
+        <input type="text" style="width:400px" placeholder="Введите заголовок" name="header">
+        </div>
+        <div>
+        <textarea rows="5" style="width:400px" name="content"></textarea>
+        </div>
+         {% csrf_token %}
+        <div>
+            <button type="submit" class="btn btn-large">Ask!</button>
+        </div>
+    </form>
+</div>

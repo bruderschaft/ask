@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+    <html charset="UTF-8">
+    <head>
+    <title>Bootstrap 101 Шаблон</title>
+    <!-- Bootstrap 
+    {% load static %}
+    {% get_static_prefix as STATIC_PREFIX %}-->
+ 
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" type="text/css" media="all" charset="utf-8">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../user.css" rel="stylesheet" media="screen">
+    <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="register-form">
+        <!--<span>-->
+            <form class="form-horizontal register-form" action="/signup/" method="POST">
+                <div class="control-group">
+                    {%if form.username.errors%}
+                        <p class="control-label">{{ form.username.errors }}</p>
+                        
+                    {%endif%}
+
+                    <label class="control-label" for="inputUsername">username</label>
+                    <div class="controls us-name">
+                        <!--<span class="us-name" id="inputUsername">-->
+                            
+                            {{form.username}}
+
+                        <!--</span>-->
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword">Email</label>
+                    <div class="controls ">
+                        <!--<span class="pass">-->
+                            {{form.email}}
+                        <!--</span>-->
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword">Password</label>
+                    <div class="controls pass">
+                        <!--<span class="pass" id="inputPassword">-->
+                            {{form.password1}}
+                            {%csrf_token%}
+                        <!--</span>-->
+                    </div>
+                </div>
+
+                {%if form.password2.errors%}
+                    <div class="control-group">
+                        <p class="control-label">{{form.password2.errors}}</p>
+                    </div>
+                {%endif%}
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword">Password</label>
+                    <div class="controls ">
+                        <!--<span class="pass">-->
+                            {{form.password2}}
+                        <!--</span>-->
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn">Войти</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--</span>-->
+    </body>
